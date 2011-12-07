@@ -1,0 +1,229 @@
+/* 
+    Document   : style.css
+    Created on : 27.09.2010, 15:55:11
+    Author     : kd
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+@import "datepicker/humanity.datepick.css";
+
+root { 
+    display: block;
+}
+body {
+      font-size:14px;
+/*      font-family: Arial, sans-serif;*/
+
+      
+}
+#header {width: 998px; height: 100px; border: 1px solid black;margin-left: 00px;
+	 position: fixed; top:0px;
+	 background-color: white;
+}
+
+#name {width:150px; height: 100%; vertical-align: middle; padding: 4px; text-align: center;}
+
+#header #logo {float:left; width:250px; margin-top: 10px;}
+#header>div {float:left; height:80px; padding:2px; }
+
+ul {margin: 0px; list-style: none;}
+
+#menu {float:left ;padding:2px;
+       
+       width:250px; width:auto; }
+fieldset#edit {width:600px;}
+#menu div {float:left;}
+#menu ul  {height: 30px; width:186px; text-align: center; margin-top: 2px; padding-left: 0px;}
+#menu li{float:left; border: 1px green dotted; margin:2px; cursor: pointer;  text-align: center; }
+ul#tip {top:0px;}
+ul#color li {width:25px; height: 25px;}
+ul#mark li{width:25px; height: 25px; }
+ul#tip li{width:56px; height: 25px;}
+ul#vid li{width:87px; height: 25px;}
+ul#mas li{width:87px; height: 25px; font-size: 90%;}
+li#zero{width:50px; height: 25px;}
+li#percent{width:40px; height: 25px;}
+li#cancell{width:64px; height: 25px;}
+li#clear{width:50px; height: 25px;}
+li#no_co{width:22px; height: 25px;}
+li#add{width:110px; height: 25px;}
+li#agent{width:180px; height: 25px;}
+li#date{width:180px; height: 25px;}
+li#date select[name="year"]{width:50px; height: 20px; margin: 2px;}
+li#date select[name="month"]{width:80px; height: 20px; margin: 2px;}
+
+div#links {margin-left: 10px; margin-top:10px;}
+#links ul {height: 30px; width:auto; margin-top: 2px; padding-left: 0px; margin-left: auto; margin-right: auto;}
+#links li {border-bottom: black solid 1px; float:left; text-align: center;
+/*    padding: 10px;*/
+    margin: 2px;}
+#links li img {border:none;}
+#total title {background-color: red;}
+
+ul#tip .dwn,ul#vid .dwn,ul#mas .dwn,ul#mark .dwn, #zero.dwn,#percent.dwn {background-color: yellow;}
+#menu ul .dwn {border:1px solid black; }
+
+
+td {padding-left:2px; }
+tr.cancell:hover {background-color: red;}
+tr img {padding:1px; float: right; border:none;}
+span.icon img {padding:1px; float: left; border:none;}
+
+table#main {width:1000px; margin-left:0px; margin-top: 104px;}
+table#agents {width:1000px; margin-left:0px; margin-top: 104px;}
+table,#main td,#main tr {border:solid 1px black;border-collapse: collapse;}
+table#main tr td a {text-decoration: none; color:black;}
+#main tbody tr td {border: 1px solid black;}
+table { border:none;}
+tbody {border-top: 5px solid black; font-size:14px;}
+tfoot td {background-color: white; position: relative;}
+tfoot td:first-child {text-align: right;}
+
+.ue {background-color: mediumslateblue; text-decoration: underline; color:white;}
+#agents {width: 80%;}
+#agents td {border: 1px solid black;}
+.dplus, .mplus {background-color: darkkhaki}
+.dminus, .mminus {background-color: darkgray }
+
+.Красный,#Красный {background: Salmon;}
+.Желтый,#Желтый{background: PeachPuff;}
+.Коричневый,#Коричневый{background: Tan;}
+.Светлый,#Светлый{background: Lightseagreen ;}
+.Белый,#Белый{background-color: Snow ;}
+.КЕ,#КЕ {background-color: Cyan}
+#Лицевой, .Лицевой {font-weight: bold; }
+
+.data {text-align:right;padding-right:5px;}
+
+#tip {clear: left;}
+
+.datepicker form {float:left;}
+.datepicker form input[type='text'] {width: 100px;}
+
+input {border-style: solid; border-color:gray;}
+input:focus {border-style: groove; border-color:lawngreen;}
+tr[action="add"] {text-decoration: underline;}
+
+fieldset {
+    
+    padding: 6px;
+    border: medium double #666;
+    width:auto;
+    
+}
+fieldset label {
+    width:150px;
+    float:left;
+    text-align: right;
+    margin: 5px 5px;
+    clear: both;
+}
+fieldset label.error {
+    float:none;
+    clear:both;
+    margin: 5px 5px;
+}
+div#shipping input,select {
+    float:left;
+    margin: .5em 1em;
+    width:120px;
+}
+div#edit select {
+    width:120px;
+    float:left;
+}
+
+
+li select[name='agent'] {width:120px; height: 15px; font-size: 10px;}
+
+body div fieldset #subbutton {
+    font-family: Impact, sans-serif;
+    font-size: 18px;
+    color:white;
+    background-color: tomato;
+    border-color: black;
+    float: none;
+    width:auto;
+    margin-bottom: 1em;
+    margin-left: 0px;
+    clear:both;
+    cursor: pointer;
+    float:none;
+}
+#backbutton {
+    font-family: Impact, sans-serif;
+    font-size: 18px;
+    color:white;
+    
+    padding: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-decoration: none;
+    background-color: teal;
+    width:auto;
+    margin-left: 80px;
+    border: 2px outset black;
+
+
+}
+fieldset br {clear:both;}
+
+
+
+.selected {background-color: silver;}
+
+
+fieldset span.warn {text-decoration: underline; font-size: 120%;}
+
+tr span#vsego a, tr span#vsego a:link ,tr span#vsego a:visited {
+    color:white;
+    float:left;
+    margin-left: 50px;
+    border:1px black solid;  
+    text-decoration: none;
+    background-color: tomato;
+    visibility: hidden;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+div#transfer {width:600px; margin-left: auto; margin-right: auto;
+
+}
+div#transfer div {padding-left: 5px;}
+
+.akt {border-width: 2px;}
+
+ td.date {padding-top: 10px; border-left-style: none; border-right-style: none;}
+table#main tbody tr.traf {
+    border-top: 2px solid black ;
+    border-left: 2px solid black ;
+    border-right: 2px solid black ;
+    }
+table#main tbody tr.tras {
+    border-bottom: 2px solid black ;
+    border-left: 2px solid black ;
+    border-right: 2px solid black ;
+    padding-bottom: 3px;
+}
+
+table#main tbody tr.tras td {padding-left: 20%;}
+span#pr {font-size: 10px; background-color: white;}
+span#nakl {font-size: 12px; background-color: darkgray; }
+table tbody tr td span#agent a{font-size: 12px; background-color: green; float:right; font-weight: normal; color: whitesmoke;}
+span#add {font-size: 12px; background-color: yellow; float:right; font-weight: normal;}
+span#spis {font-size: 12px; background-color: black; color:wheat; float:right; font-weight: normal;}
+span#no_con {font-size: 12px; background-color: darkblue; color:whitesmoke; float:right; font-weight: normal;}
+span#pws {font-size: 12px; background-color: yellowgreen; float:right; font-weight: normal;}
+span#mws {font-size: 12px; background-color: goldenrod; float:right; font-weight: normal;}
+.date {text-align: center;}
+
+
+
+

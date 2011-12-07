@@ -1,0 +1,43 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script type="text/javascript" src="../jquery-1.4.2.min.js"></script>
+        <title>Склад</title>
+    </head>
+    <body>
+Склад
+        <?php
+mysql_connect(server,disp,disp);
+mysql_query('SET NAMES "utf8"');
+mysql_select_db(disp);
+
+$q = mysql_query("select tovar.prim,sclad.id,sclad.begin,sclad.today from tovar left outer join sclad on sclad.id = tovar.id");
+for ($w=1;$w<=200;$w++){
+$r=rand(0,1230);$u=rand(0,1230);
+mysql_query("INSERT INTO  `disp`.`sclad` (`id` ,`begin` ,`today`)VALUES ('$w',  '$r',  '$u')");
+echo rand(-1234,123) ;
+}
+?>
+<table>
+<tr>
+<th>Имя</th><th>Начало месяца</th><th>Сегодня</th>
+</tr>
+<?php
+while ($i != mysql_num_rows($q))
+{
+$id = mysql_result($q,$i,"sclad.id");
+$n = mysql_result($q,$i,"tovar.prim");
+$b = mysql_result($q,$i,"sclad.begin");
+$t = mysql_result($q,$i++,"sclad.today");
+
+printf("<tr><td>$i</td><td>%s</td><td>%d</td><td>%d</td><td>$id</td></tr>",$n,$b,$t);
+}
+        ?>
+</table>
+    </body>
+</html>

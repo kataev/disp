@@ -1,0 +1,126 @@
+/* 
+    Document   : forms
+    Created on : 08.11.2010, 21:25:50
+    Author     : bteam
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+}
+
+body {
+    background-image: url('../logo.png');
+    background-repeat: no-repeat;
+    background-position: 90% 90%;
+    font-family: Sans-serif;
+    
+}
+
+div#h {
+    background-color: #990D0D;
+    text: whyte;
+    float:left;
+    width:600px;
+
+
+}
+
+body>div>table { border: 1px solid black; border-collapse: collapse; margin-left: auto; margin-right: auto;}
+
+body>div>table td {border: 1px black solid;}
+
+body>div fieldset>fieldset {
+    width: 330px;
+    float: left;
+}
+
+body>div fieldset {
+/*    width: 330px;*/
+        border:none;
+	    margin-left: auto;
+    margin-right: auto;
+/*        float:left;*/
+}
+
+form {float:left;}
+
+body>div input[type="submit"] {
+    height: 40px;
+}
+
+body>div h1 {
+    color: wheat;
+/*    width:160px;*/
+/*    float:left;*/
+    margin-left: 4px;
+    vertical-align: bottom;
+    text-align: center;
+}
+
+body>div h2 {
+    
+    margin-top: -20px;
+    margin-bottom: -10px;
+    color: white;
+/*    float:left;*/
+/*    width:430px;*/
+/*    margin-left: 4px;*/
+    text-align: center;
+}
+
+body>div {
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+    border: solid black 1px;
+    height: 100%;
+}
+body div#datepick-div {height: auto;}
+
+body>div label {
+    width: 180px;
+    float: left;
+    text-align: right;
+    height: 20px;
+    vertical-align: middle;
+    clear: both;
+    margin: 5px 4px;
+}
+[readonly="readonly"]{ border-color: silver;}
+
+div input,div select, div textarea {
+    margin: 5px 5px;
+    
+    height: 20px;
+    border: 1px black solid;
+    vertical-align: middle;
+}
+
+div input[type="submit"] {
+
+}
+
+div textarea {height: 40px;}
+
+div br {clear:both; }
+
+div#h a {
+    color: wheat;
+    padding: 5px;
+    float:left;
+    clear:left;
+}
+
+img {
+    padding:1px;
+    border:none;
+    vertical-align: middle;
+}
+
