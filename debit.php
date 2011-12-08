@@ -36,7 +36,7 @@ $row = mysql_fetch_assoc($query);
 ?>
         <div>
 	    <div id="h" >
-            <h1>Списание и некондиция</h1>
+            <h1>Списание и прочие странности</h1>
 	    <h2><?php echo $row[name]?></h2>
 	    <a href="tovar.php"><img src="../icon/arrow-turn-180-left.png" />Назад</a>
 	    </div>
@@ -47,7 +47,7 @@ $row = mysql_fetch_assoc($query);
                 <fieldset id="workshop" class="<?php
                             $zero=""; if (!($row[begin]||$row[total])) {$zero = "zero";}
                             printf("$row[mark] $row[mas] $row[vid] $row[tip] $row[color] $zero") ?>">
-		    <label for="action"><img src="../icon/folder-stamp.png" /> Некондиция</label>
+		    <label for="action"><img src="../icon/folder-stamp.png" />Излишки</label>
 		    <input type="radio" name="action" value="no_condition" /><br />
 		    <label for="action"><img src="../icon/folder-broken.png" />Списание</label>
 		    <input type="radio" name="action" value="debit" /><br />

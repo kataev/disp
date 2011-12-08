@@ -54,7 +54,7 @@ $row = mysql_fetch_assoc($query);
 
 ?>
 	<div>
-	    <div id="h"><h1>Принятие с производства</h1>
+	    <div id="h"><h1>Принятие</h1>
 	    <h2><?php echo $row[name]?></h2>
 	    <a href="sclad.php"><img src="../icon/arrow-turn-180-left.png" />Назад</a>
 	    </div>

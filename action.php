@@ -73,7 +73,7 @@ switch ($g_action) {
 	break;
 
 //canceldebit---------------------------------------
-    case canceldebit:
+    case cancelspis:
 	echo canceldebit;
 	$query="SELECT tov,spis FROM jurnal where id=$g_jur";
 	echo $query;

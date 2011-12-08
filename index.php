@@ -185,7 +185,7 @@ $query = mysql_query("select mark,jurnal.id,tovar.prim,jurnal.prim as pr,jurnal.
 <tr jur="<?php echo $row[id] ?>" action="add" class="add <?php printf("$row[mark] $row[mas] $row[vid] $row[tip] $row[color]"); ?>">
     <td><img src="<?php echo $pic[$act]?>"/></td>
     <td><?php echo $row[prim]; ?>
-        <span id="add">Принято с производства</span>
+        <span id="add">Принято</span>
 	<span id="pr"><?php echo preg_replace('/\\\/','',$row[pr]); ?></span></td>
     <td><?php echo $row[plus] ?></td>
     <td colspan="1"><?php echo $row[pr] ?></td><td></td>
