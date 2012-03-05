@@ -35,25 +35,6 @@ and open the template in the editor.
 
 	
 
-        $("form").validate({
-               rules : {
-                       kirp : {required : true,number: true,},
-                       poddon: {required : true,number: true,},
-                       
-               },
-               messages : {
-                       kirp : {
-                               required : "Введите кол-во кирпича",
-                               number: "Вводите число",
-
-                       },
-                      poddon : {
-                               required : "Введите кол-во поддонов",
-                               number: "Вводите число",
-                       },
-              
-               }
-       });
         });
             </script>
     </head>

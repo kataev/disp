@@ -78,6 +78,7 @@ else {
 		    <input type="radio" name="mark" value="175" />175
 		    <input type="radio" name="mark" value="200" />200
 		    <input type="radio" name="mark" value="250" />250<br />
+		    <input type="radio" name="mark" value="300" />300
 		    <input type="radio" name="mark" value="0" />Более 20% (Некондиция)
 		    </fieldset>
 		    <label for="mark">Цвет:</label>
