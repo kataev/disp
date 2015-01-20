@@ -164,7 +164,6 @@ $query = mysql_query("select mark,jurnal.id,tovar.prim,jurnal.prim as pr,jurnal.
         $pic["spis"]="../icon/folder-broken.png";
         $pic["no_con"]="../icon/folder-stamp.png";
         switch ($act) {
-//akt----------------------------------------
             case 'akt': ?>
                 <!--Акт на перевод-->
                 <tr jur="<?php echo $row[id] ?>" action="transfer"  class="<?php printf("$row[mark] $row[mas] $row[vid] $row[tip] $row[color]"); ?>">
@@ -175,10 +174,9 @@ $query = mysql_query("select mark,jurnal.id,tovar.prim,jurnal.prim as pr,jurnal.
                     <td><?php if ($row[makt]==0){echo $row[pakt];} else {echo $row[makt];} ?></td>
                     <td><?php echo $row[poddon];?></td><td></td>
                 </tr>
-                <?php break;
+                <?php break; ?>
 
-//plus----------------------------------------
-            case 'plus': ?>
+            <?php case 'plus': ?>
                 <!--Добавление на склад-->
                 <tr jur="<?php echo $row[id] ?>" action="add" class="add <?php printf("$row[mark] $row[mas] $row[vid] $row[tip] $row[color]"); ?>">
                     <td><img src="<?php echo $pic[$act]?>"/></td>
@@ -188,10 +186,9 @@ $query = mysql_query("select mark,jurnal.id,tovar.prim,jurnal.prim as pr,jurnal.
                     <td><?php echo $row[plus] ?></td>
                     <td colspan="1"><?php echo $row[pr] ?></td><td></td>
                 </tr>
-                <?php break;
+                <?php break; ?>
 
-//spis----------------------------------------
-            case 'spis': ?>
+            <?php case 'spis': ?>
                 <!--Добавление на склад-->
                 <tr jur="<?php echo $row[id] ?>" action="spis" class="add <?php printf("$row[mark] $row[mas] $row[vid] $row[tip] $row[color]"); ?>">
                     <td><img src="<?php echo $pic[$act]?>"/></td>
@@ -201,10 +198,9 @@ $query = mysql_query("select mark,jurnal.id,tovar.prim,jurnal.prim as pr,jurnal.
                     <td><?php echo $row[spis] ?></td>
                     <td colspan="1"><?php echo $row[pr] ?></td><td></td>
                 </tr>
-                <?php break;
+                <?php break; ?>
 
-//no_con----------------------------------------
-            case 'no_con': ?>
+            <?php case 'no_con': ?>
                 <!--Добавление на склад-->
                 <tr jur="<?php echo $row[id] ?>" action="no_con" class="add <?php printf("$row[mark] $row[mas] $row[vid] $row[tip] $row[color]"); ?>">
                     <td><img src="<?php echo $pic[$act]?>"/></td>
@@ -214,10 +210,9 @@ $query = mysql_query("select mark,jurnal.id,tovar.prim,jurnal.prim as pr,jurnal.
                     <td><?php echo $row[no_con] ?></td>
                     <td colspan="1"><?php echo $row[pr] ?></td><td></td>
                 </tr>
-                <?php break;
+                <?php break; ?>
 
-//minus----------------------------------------
-            case 'minus': ?>
+            <?php case 'minus': ?>
                 <!--Отгрузка-->
                 <tr jur="<?php echo $row[id] ?>" action="sold" class="sold <?php printf("$row[mark] $row[mas] $row[vid] $row[tip] $row[color]"); ?>">
                     <td><a title="Просмотр операции"  href="operation.php?id=<?php echo $row[id] ?>"><img src="<?php echo $pic[$act]?>"/></a></td>
@@ -231,7 +226,6 @@ $query = mysql_query("select mark,jurnal.id,tovar.prim,jurnal.prim as pr,jurnal.
                     <td><?php echo $row[money] ?></td>
                 </tr>
                 <?php break;
-//ws----------------------------------------
             case 'mws': ?>
                 <!--Выдача в цех-->
                 <tr jur="<?php echo $row[id] ?>" action="mws" class="mws <?php printf("$row[mark] $row[mas] $row[vid] $row[tip] $row[color]"); ?>">
