@@ -47,7 +47,7 @@ $row = mysql_fetch_assoc($query);
                 <fieldset id="workshop" class="<?php
                             $zero=""; if (!($row[begin]||$row[total])) {$zero = "zero";}
                             printf("$row[mark] $row[mas] $row[vid] $row[tip] $row[color] $zero") ?>">
-		    <label for="action"><img src="../icon/folder-stamp.png" />Излишки</label>
+		    <label for="action"><img src="../icon/folder-stamp.png" />Некондиция</label>
 		    <input type="radio" name="action" value="no_condition" /><br />
 		    <label for="action"><img src="../icon/folder-broken.png" />Списание</label>
 		    <input type="radio" name="action" value="debit" /><br />
