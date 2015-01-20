@@ -261,7 +261,7 @@ mysql_query("INSERT INTO `jurnal`
 	'".$g_akt."',
 	'".$date."',
 	NOW(),
-	'".$_GET[prim]."'); ");
+	'".$_GET['prim']."'); ");
 
 mysql_query("UPDATE  `sclad`
 	SET  `total` =  sclad.total-".$g_kirp."

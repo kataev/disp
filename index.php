@@ -60,7 +60,7 @@ mysql_select_db('disp');
                             $mon = mysql_query("SELECT month(date) AS month FROM jurnal GROUP BY month(date) ORDER BY 1 DESC;");
                             while ($ag = mysql_fetch_assoc($mon)) {
                                 ?>
-                                <option value="<?php echo $ag[month]; ?>"><?php echo $mou[$ag[month] - 1]; ?></option>
+                                <option value="<?php echo $ag['month']; ?>"><?php echo $mou[$ag['month'] - 1]; ?></option>
 
                             <?php }; ?>
                         </select>
@@ -70,7 +70,7 @@ mysql_select_db('disp');
                             $mon = mysql_query("SELECT year(date) AS year FROM jurnal GROUP BY year(date) ORDER BY 1 DESC;");
                             while ($ag = mysql_fetch_assoc($mon)) {
                                 ?>
-                                <option value="<?php echo $ag[year]; ?>"><?php echo $ag[year]; ?></option>
+                                <option value="<?php echo $ag['year']; ?>"><?php echo $ag['year']; ?></option>
 
                             <?php }; ?>
                         </select>

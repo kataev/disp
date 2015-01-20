@@ -49,7 +49,7 @@ mysql_query('SET NAMES "utf8"');
 mysql_select_db('disp');
 $query = mysql_query("  SELECT id,mark,vid,mas,tip,color,tovar.prim as name
                         FROM tovar
-                        WHERE tovar.id=$_GET[id]");
+                        WHERE tovar.id=$_GET['id']");
 $row = mysql_fetch_assoc($query);
 
 ?>
@@ -72,7 +72,7 @@ $row = mysql_fetch_assoc($query);
             <label for="prim"><img src="../icon/ui-accordion.png"/> Примечание:</label>
             <textarea name="prim" cols="40" rows="3"></textarea>
 
-            <input id="action" type="hidden" name="id" value="<?php echo $_GET[id] ?>"/>
+            <input id="action" type="hidden" name="id" value="<?php echo $_GET['id'] ?>"/>
             <input id="add" type="hidden" name="action" value="add"/>
 
             <input id="subbutton" type="submit" name="submit" value="Сохранить"/>

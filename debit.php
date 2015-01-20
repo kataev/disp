@@ -28,7 +28,7 @@ mysql_query('SET NAMES "utf8"');
 mysql_select_db('disp');
 $query = mysql_query("  SELECT tovar.id as id,mark,vid,mas,tip,color,tovar.prim as name,total
                         FROM sclad,tovar
-                        WHERE sclad.id=tovar.id and tovar.id=$_GET[id]");
+                        WHERE sclad.id=tovar.id and tovar.id=$_GET['id']");
 $row = mysql_fetch_assoc($query);
 
 
@@ -37,15 +37,15 @@ $row = mysql_fetch_assoc($query);
         <div>
 	    <div id="h" >
             <h1>Списание и прочие странности</h1>
-	    <h2><?php echo $row[name]?></h2>
+	    <h2><?php echo $row['name']?></h2>
 	    <a href="tovar.php"><img src="../icon/arrow-turn-180-left.png" />Назад</a>
 	    </div>
             <form name="" action="action.php" method="GET">
-            
-            
-            
+
+
+
                 <fieldset id="workshop" class="<?php
-                            $zero=""; if (!($row[begin]||$row[total])) {$zero = "zero";}
+                            $zero=""; if (!($row['begin']||$row['total'])) {$zero = "zero";}
                             printf("$row[mark] $row[mas] $row[vid] $row[tip] $row[color] $zero") ?>">
 		    <label for="action"><img src="../icon/folder-stamp.png" />Некондиция</label>
 		    <input type="radio" name="action" value="no_condition" /><br />
@@ -53,7 +53,7 @@ $row = mysql_fetch_assoc($query);
 		    <input type="radio" name="action" value="debit" /><br />
 
                     <label for="shop"><img src="../icon/counter.png" /> Кол-во кирпича:</label>
-                    <input max="<?php echo $row[total] ?>" type="text" name="minus"/><br />
+                    <input max="<?php echo $row['total'] ?>" type="text" name="minus"/><br />
 
                     <label for="poddon"><img src="../icon/store.png" /> Кол-во поддонов:</label>
                     <input type="text" name="poddon"/><br />
@@ -65,13 +65,13 @@ $row = mysql_fetch_assoc($query);
                     <textarea name="prim" cols="40" rows="3"></textarea>
 
                     <input type="submit" name="submit" value="Сохранить"/>
-		    
-                    <input id="subm" type="hidden" name="id" value="<?php echo $_GET[id] ?>"/>
-		    
-                    
+
+                    <input id="subm" type="hidden" name="id" value="<?php echo $_GET['id'] ?>"/>
+
+
                 </fieldset>
-            
-            
+
+
             </form>
         </div>
     </body>

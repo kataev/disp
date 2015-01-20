@@ -46,11 +46,11 @@ $query = mysql_query("select * from agent");
 	    <tbody>
                   <?php while($row=mysql_fetch_assoc($query)){?>
 		<tr>
-		    <td><a href="agents.php?agent=<?php echo $row[id] ?>"><?php echo preg_replace('/\\\/','',$row[name])?></a></td>
-		    <td><?php echo $row[inn]?></td>
-		    <td><?php echo $row[address]?></td>
-		    <td title="<?php echo preg_replace('/\\\/','',$row[bank]) ?>"><?php echo $row[schet]?></td>
-		    <td><?php echo $row[phone]?></td>
+		    <td><a href="agents.php?agent=<?php echo $row['id'] ?>"><?php echo preg_replace('/\\\/','',$row['name'])?></a></td>
+		    <td><?php echo $row['inn']?></td>
+		    <td><?php echo $row['address']?></td>
+		    <td title="<?php echo preg_replace('/\\\/','',$row['bank']) ?>"><?php echo $row['schet']?></td>
+		    <td><?php echo $row['phone']?></td>
 		</tr>
 
 		<?php } ?>

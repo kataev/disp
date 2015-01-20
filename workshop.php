@@ -69,7 +69,7 @@ $row = mysql_fetch_assoc($query);
 
             <input type="submit" name="submit" value="Сохранить"/>
 
-            <input id="subm" type="hidden" name="id" value="<?php echo $_GET[id] ?>"/>
+            <input id="subm" type="hidden" name="id" value="<?php echo $_GET['id'] ?>"/>
 
 
         </fieldset>

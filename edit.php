@@ -31,7 +31,7 @@ mysql_connect('localhost','disp','disp');
 mysql_query('SET NAMES "utf8"');
 mysql_select_db('disp');
 
-if (isset($_GET[id])){
+if (isset($_GET['id'])){
 $query = mysql_query("  SELECT tovar.id as id,mark,vid,mas,tip,color,tovar.prim,tovar.name,total
                         FROM sclad,tovar
                         WHERE sclad.id=tovar.id and tovar.id=$_GET[id]");
@@ -49,18 +49,18 @@ else {
         <div>
             <div id="h">
                 <h1><?php echo $h1 ?></h1>
-                <h2><?php echo $row[name]?></h2>
+                <h2><?php echo $row['name']?></h2>
 		<a href="sclad.php"><img alt="" src="../icon/arrow-turn-180-left.png" />Назад</a>
             </div>
             <form name="Изменение" action="action.php" method="GET">
                 
                 <fieldset id="edit"
-			  color="<?php echo $row[color];?>"
-			  mas="<?php echo $row[mas];?>"
-                          mark="<?php echo $row[mark];?>" 
-			  vid="<?php echo $row[vid];?>"
-			  tip="<?php echo $row[tip];?>"
-			  class="<?php $zero=""; if (!($row[begin]||$row[total])) {$zero = "zero";}
+			  color="<?php echo $row['color'];?>"
+			  mas="<?php echo $row['mas'];?>"
+                          mark="<?php echo $row['mark'];?>"
+			  vid="<?php echo $row['vid'];?>"
+			  tip="<?php echo $row['tip'];?>"
+			  class="<?php $zero=""; if (!($row['begin']||$row['total'])) {$zero = "zero";}
                             printf("$row[mark] $row[mas] $row[vid] $row[tip] $row[color] $zero") ?>">
                     <label for="name">Имя для накладной:</label>
                     <textarea name="name" cols="40" rows="3"></textarea><br />
@@ -69,7 +69,7 @@ else {
                     <textarea name="prim" cols="40" rows="3"></textarea><br />
 
 		    <label for="total">Остаток:</label>
-                    <input type="text" name="total" value="<?php echo $row[total] ?>"/><br />
+                    <input type="text" name="total" value="<?php echo $row['total'] ?>"/><br />
 		    <label for="mark">Марка:</label>
 		    <fieldset>
 		    <input type="radio" name="mark" value="100" />100
@@ -121,7 +121,7 @@ else {
 		    </fieldset>
 		    
 		    <input type="hidden" name="action" value="<?php echo $act ?>"/>
-                    <input type="hidden" name="id" value="<?php echo $_GET[id] ?>"/>
+                    <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>"/>
                     <a id="backbutton" href="tovar.php">Назад</a>
                     <input id="subbutton" type="submit" name="submit" value="Сохранить"/>
                 </fieldset>
