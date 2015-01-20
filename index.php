@@ -143,7 +143,7 @@ $query = mysql_query("SELECT mark,jurnal.id,tovar.prim,jurnal.prim AS pr,jurnal.
                 <td colspan="7" class="date"><?php if ($date == $row['date']) {
                         echo "<b>Сегондя</b> ";
                     };
-                    echo $day[date("w", strtotime($row['date']))], " ", date("d", strtotime($row['date'])), " ", $mou[date("n", strtotime($row['date'])) - 1], " ", date("Y", strtotime($row['date'])) ?></td>
+                    echo date("d", strtotime($row['date'])), " ", $mou[date("n", strtotime($row['date'])) - 1], " ", date("Y", strtotime($row['date'])) ?></td>
             </tr>
         <?php
         }
@@ -254,7 +254,7 @@ $query = mysql_query("SELECT mark,jurnal.id,tovar.prim,jurnal.prim AS pr,jurnal.
                                 src="<?php echo $pic[$act] ?>"/></a></td>
                     <td><?php echo $row['prim']; ?>
                         <span id="agent"><a
-                                href="agents.php?group=date&agent=<?php echo $row[agid] ?>"><?php echo preg_replace('/\\\/', '', $row[agent]); ?></a></span>
+                                href="agents.php?group=date&agent=<?php echo $row[agid] ?>"><?php echo preg_replace('/\\\/', '', $row['agent']); ?></a></span>
                         <span id="pr"><?php echo $row['pr'] ?></span> <span id="nakl"><?php echo $row['nakl']; ?></span>
                         <?php if ($row[trans] == -1) { ?>
                             <span style="float:right; border:1px red solid;" class="trans"><a
@@ -264,7 +264,7 @@ $query = mysql_query("SELECT mark,jurnal.id,tovar.prim,jurnal.prim AS pr,jurnal.
                     </td>
                     <td><?php echo $row['minus'] ?></td>
                     <td><?php echo $row['poddon'] ?></td>
-                    <td><?php echo $row[money] ?></td>
+                    <td><?php echo $row['money'] ?></td>
                 </tr>
                 <?php break; ?>
             <?php
