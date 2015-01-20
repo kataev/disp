@@ -1,9 +1,9 @@
 <?php
 header('Content-Type: application/json; codepage=utf-8');
 
-mysql_connect(localhost,disp,disp);
+mysql_connect('localhost','disp','disp');
 mysql_query('SET NAMES "utf8"');
-mysql_select_db(disp);
+mysql_select_db('disp');
 
 
 $g_month=isset($g_month)?$g_month:date('m');

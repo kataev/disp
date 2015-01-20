@@ -8,9 +8,9 @@ $date1= $date;
 if ($g_date!="") {$date=$g_date;}
 $date1=!isset($g_date1)?$date1:$g_date1;
 echo $date;
-mysql_connect(localhost,disp,disp);
+mysql_connect('localhost','disp','disp');
 mysql_query('SET NAMES "utf8"');
-mysql_select_db(disp);
+mysql_select_db('disp');
 
 switch ($g_action) {
 

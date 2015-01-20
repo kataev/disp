@@ -27,9 +27,9 @@ and open the template in the editor.
     <body>
         <?php
 
-mysql_connect(localhost,disp,disp);
+mysql_connect('localhost','disp','disp');
 mysql_query('SET NAMES "utf8"');
-mysql_select_db(disp);
+mysql_select_db('disp');
 
 if (isset($_GET[id])){
 $query = mysql_query("  SELECT tovar.id as id,mark,vid,mas,tip,color,tovar.prim,tovar.name,total

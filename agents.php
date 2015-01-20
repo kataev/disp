@@ -40,9 +40,9 @@ $date1=!isset($g_date1)?$date1:$g_date1;
 $day = array("Воскресенье","Понедельник","Вторник","Среда","Четверг","Пятница","Суббота");
 $mou = array("Января","Февраля","Марта","Апреля","Мая","Июня","Июля","Августа","Сентября","Октября","Ноября","Декабря");
 
-mysql_connect(localhost,disp,disp);
+mysql_connect('localhost','disp','disp');
 mysql_query('SET NAMES "utf8"');
-mysql_select_db(disp);
+mysql_select_db('disp');
 
 $agent=mysql_query("SELECT * FROM agent where id=$g_agent");
 $ag=mysql_fetch_assoc($agent);

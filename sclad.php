@@ -80,9 +80,9 @@ and open the template in the editor.
 
 
         <?php
-mysql_connect(localhost,disp,disp);
+mysql_connect('localhost','disp','disp');
 mysql_query('SET NAMES "utf8"');
-mysql_select_db(disp);
+mysql_select_db('disp');
 function r_ye($n,$s){
     switch ($s){
 	case 'Полуторный': return round($n*1.35);	    break;

@@ -90,9 +90,9 @@ $date1=!isset($g_date1)?$date1:$g_date1;
 $day = array("Воскресенье","Понедельник","Вторник","Среда","Четверг","Пятница","Суббота");
 $mou = array("Января","Февраля","Марта","Апреля","Мая","Июня","Июля","Августа","Сентября","Октября","Ноября","Декабря");
 
-mysql_connect(localhost,disp,disp);
+mysql_connect('localhost','disp','disp');
 mysql_query('SET NAMES "utf8"');
-mysql_select_db(disp);
+mysql_select_db('disp');
 $query = mysql_query("select jurnal.id,tovar.prim,jurnal.prim as pr,nakl,tov,minus,plus,akt,poddon,jurnal.agent as agid,agent.name as agent,pakt,makt,date,time,color,mas,vid,tip, workshop as pws,mws,money
 	    from jurnal
 	    left join tovar on tovar.id=jurnal.tov

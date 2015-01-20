@@ -86,9 +86,9 @@ and open the template in the editor.
 
         <?php
 
-mysql_connect(localhost,disp,disp);
+mysql_connect('localhost','disp','disp');
 mysql_query('SET NAMES "utf8"');
-mysql_select_db(disp);
+mysql_select_db('disp');
 $date = date('Y-m-d');
 $date1= $date;
 $date=!isset($g_date)?$date:$g_date;
