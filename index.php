@@ -136,8 +136,9 @@ $query = mysql_query("SELECT mark,jurnal.id,tovar.prim,jurnal.prim AS pr,jurnal.
     </thead>
 
     <tbody>
-    <?php while ($row = mysql_fetch_assoc($query)) {
-        $date = $date_t = 0;
+    <?php
+    $date = $date_t = 0;
+    while ($row = mysql_fetch_assoc($query)) {
         if ($row['date'] != $date_t) {
             ?>
             <tr>
@@ -202,7 +203,8 @@ $query = mysql_query("SELECT mark,jurnal.id,tovar.prim,jurnal.prim AS pr,jurnal.
                 <?php break; ?>
 
             <?php
-            case 'plus': ?>
+            case 'plus':
+                ?>
                 <!--Добавление на склад-->
                 <tr jur="<?php echo $row['id'] ?>" action="add"
                     class="add <?php printf("$row[mark] $row[mas] $row[vid] $row[tip] $row[color]"); ?>">
@@ -217,7 +219,8 @@ $query = mysql_query("SELECT mark,jurnal.id,tovar.prim,jurnal.prim AS pr,jurnal.
                 <?php break; ?>
 
             <?php
-            case 'spis': ?>
+            case 'spis':
+                ?>
                 <!--Добавление на склад-->
                 <tr jur="<?php echo $row['id'] ?>" action="spis"
                     class="add <?php printf("$row[mark] $row[mas] $row[vid] $row[tip] $row[color]"); ?>">
@@ -232,7 +235,8 @@ $query = mysql_query("SELECT mark,jurnal.id,tovar.prim,jurnal.prim AS pr,jurnal.
                 <?php break; ?>
 
             <?php
-            case 'no_con': ?>
+            case 'no_con':
+                ?>
                 <!--Добавление на склад-->
                 <tr jur="<?php echo $row['id'] ?>" action="no_con"
                     class="add <?php printf("$row[mark] $row[mas] $row[vid] $row[tip] $row[color]"); ?>">
@@ -247,7 +251,8 @@ $query = mysql_query("SELECT mark,jurnal.id,tovar.prim,jurnal.prim AS pr,jurnal.
                 <?php break; ?>
 
             <?php
-            case 'minus': ?>
+            case 'minus':
+                ?>
                 <!--Отгрузка-->
                 <tr jur="<?php echo $row['id'] ?>" action="sold"
                     class="sold <?php printf("$row[mark] $row[mas] $row[vid] $row[tip] $row[color]"); ?>">
@@ -259,8 +264,9 @@ $query = mysql_query("SELECT mark,jurnal.id,tovar.prim,jurnal.prim AS pr,jurnal.
                         <span id="pr"><?php echo $row['pr'] ?></span> <span id="nakl"><?php echo $row['nakl']; ?></span>
                         <?php if ($row['trans'] == -1) { ?>
                             <span style="float:right; border:1px red solid;" class="trans"><a
-                                    href="operation.php?id=<?php echo $row['id'] ?>"><img title="Не указана цена доставки"
-                                                                                        src="../icon/wooden-box--exclamation.png"><a/></span>
+                                    href="operation.php?id=<?php echo $row['id'] ?>"><img
+                                        title="Не указана цена доставки"
+                                        src="../icon/wooden-box--exclamation.png"><a/></span>
                         <?php } ?>
                     </td>
                     <td><?php echo $row['minus'] ?></td>
@@ -269,7 +275,8 @@ $query = mysql_query("SELECT mark,jurnal.id,tovar.prim,jurnal.prim AS pr,jurnal.
                 </tr>
                 <?php break; ?>
             <?php
-            case 'mws': ?>
+            case 'mws':
+                ?>
                 <!--Выдача в цех-->
                 <tr jur="<?php echo $row['id'] ?>" action="mws"
                     class="mws <?php printf("$row[mark] $row[mas] $row[vid] $row[tip] $row[color]"); ?>">
@@ -284,7 +291,8 @@ $query = mysql_query("SELECT mark,jurnal.id,tovar.prim,jurnal.prim AS pr,jurnal.
                 </tr>
                 <?php break; ?>
             <?php
-            case 'pws': ?>
+            case 'pws':
+                ?>
                 <!--Получение из цеха-->
                 <tr jur="<?php echo $row['id'] ?>" action="pws"
                     class="pws <?php printf("$row[mark] $row[mas] $row[vid] $row[tip] $row[color]"); ?>">
