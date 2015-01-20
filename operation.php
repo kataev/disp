@@ -78,7 +78,7 @@ $mou = array("Января","Февраля","Марта","Апреля","Мая
                     <label for="prim"><img src="../icon/ui-accordion.png" /> Примечание:</label>
                     <textarea name="prim" readonly="readonly" value="<?php echo $row[prim] ?>" cols="40" rows="3"></textarea>
 
-		    <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>"/>
+		    <input type="hidden" name="id" value="<?php echo $_SERVER['id'] ?>"/>
 		    <input type="hidden" name="action" value="oper"/>
 
 		    <input type="submit" value="Сохранить"/>

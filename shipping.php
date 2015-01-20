@@ -97,7 +97,7 @@ mysql_query('SET NAMES "utf8"');
 mysql_select_db('disp');
 $query = mysql_query("  SELECT tovar.id as id,mark,vid,mas,tip,color,tovar.prim as name,total
                         FROM sclad,tovar
-                        WHERE sclad.id=tovar.id and tovar.id=$_GET[id]");
+                        WHERE sclad.id=tovar.id and tovar.id=$_SERVER[id]");
 $row = mysql_fetch_assoc($query);
 
 
@@ -148,7 +148,7 @@ $row = mysql_fetch_assoc($query);
 		    <input type="reset"  value="Сброс"/>
                     <input type="submit" value="Сохранить"/>
 		    
-                    <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>"/>
+                    <input type="hidden" name="id" value="<?php echo $_SERVER['id'] ?>"/>
 		    <input type="hidden" name="action" value="sold"/>
                     
                 </fieldset>

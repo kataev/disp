@@ -31,10 +31,10 @@ mysql_connect('localhost','disp','disp');
 mysql_query('SET NAMES "utf8"');
 mysql_select_db('disp');
 
-if (isset($_GET['id'])){
+if (isset($_SERVER['id'])){
 $query = mysql_query("  SELECT tovar.id as id,mark,vid,mas,tip,color,tovar.prim,tovar.name,total
                         FROM sclad,tovar
-                        WHERE sclad.id=tovar.id and tovar.id=$_GET[id]");
+                        WHERE sclad.id=tovar.id and tovar.id=$_SERVER[id]");
 $row = mysql_fetch_assoc($query);
 $act = "edit";
 $h1 = "Редакти-<br/>рование";
@@ -121,7 +121,7 @@ else {
 		    </fieldset>
 		    
 		    <input type="hidden" name="action" value="<?php echo $act ?>"/>
-                    <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>"/>
+                    <input type="hidden" name="id" value="<?php echo $_SERVER['id'] ?>"/>
                     <a id="backbutton" href="tovar.php">Назад</a>
                     <input id="subbutton" type="submit" name="submit" value="Сохранить"/>
                 </fieldset>
