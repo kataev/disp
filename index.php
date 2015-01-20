@@ -107,14 +107,14 @@ mysql_select_db('disp');
 <?php
 
 $query = mysql_query("SELECT mark,jurnal.id,tovar.prim,jurnal.prim AS pr,jurnal.price,jurnal.trans,nakl,
-	tov,minus,plus,akt,poddon,jurnal.agent AS agid,agent.name AS agent,pakt,makt,date,time,color,mas,vid,tip,
+	tov,minus,plus,akt,'poddon',jurnal.agent AS agid,agent.name AS agent,pakt,'mark',date,time,color,mas,vid,tip,
 	workshop AS pws,mws,ROUND(jurnal.price*jurnal.minus) AS money, spis, no_con
 	    FROM jurnal
 	    LEFT JOIN tovar ON tovar.id=jurnal.tov
 	    LEFT JOIN agent ON jurnal.agent=agent.id WHERE month(date)=$g_month AND year(date)=$g_year
 	    ORDER BY DATE DESC,TIME DESC,NAKL,id
 ");
-//$query = mysql_query("SELECT jurnal.id,tovar.prim,jurnal.prim as pr,tov,minus,plus,akt,poddon,agent.name as agent,pakt,makt,date,time,color,mas,vid,tip
+//$query = mysql_query("SELECT jurnal.id,tovar.prim,jurnal.prim as pr,tov,minus,plus,akt,'poddon',agent.name as agent,pakt,'mark',date,time,color,mas,vid,tip
 //    FROM jurnal,tovar,agent
 //    WHERE month(date)=MONTH(CURDATE()) and tov=tovar.id or jurnal.agent=agent.id
 //
@@ -137,37 +137,37 @@ $query = mysql_query("SELECT mark,jurnal.id,tovar.prim,jurnal.prim AS pr,jurnal.
 
     <tbody>
     <?php while ($row = mysql_fetch_assoc($query)) {
-        if ($row[date] != $date_t) {
+        if ($row['date'] != $date_t) {
             ?>
             <tr>
-                <td colspan="7" class="date"><?php if ($date == $row[date]) {
+                <td colspan="7" class="date"><?php if ($date == $row['date']) {
                         echo "<b>Сегондя</b> ";
                     };
-                    echo $day[date("w", strtotime($row[date]))], " ", date("d", strtotime($row[date])), " ", $mou[date("n", strtotime($row[date])) - 1], " ", date("Y", strtotime($row[date])) ?></td>
+                    echo $day[date("w", strtotime($row['date']))], " ", date("d", strtotime($row['date'])), " ", $mou[date("n", strtotime($row['date'])) - 1], " ", date("Y", strtotime($row['date'])) ?></td>
             </tr>
         <?php
         }
     ;
-        $date_t = $row[date];
-        if ($row[akt] != 0) {
+        $date_t = $row['date'];
+        if ($row['akt'] != 0) {
             $act = "akt";
         }
-        if ($row[plus] > 0) {
+        if ($row['plus'] > 0) {
             $act = "plus";
         }
-        if ($row[minus] > 0) {
+        if ($row['minus'] > 0) {
             $act = "minus";
         }
-        if ($row[mws] > 0) {
+        if ($row['mws'] > 0) {
             $act = "mws";
         }
-        if ($row[pws] > 0) {
+        if ($row['pws'] > 0) {
             $act = "pws";
         }
-        if ($row[spis] > 0) {
+        if ($row['spis'] > 0) {
             $act = "spis";
         }
-        if ($row[no_con] > 0) {
+        if ($row['no_con'] > 0) {
             $act = "no_con";
         }
 
@@ -182,20 +182,20 @@ $query = mysql_query("SELECT mark,jurnal.id,tovar.prim,jurnal.prim AS pr,jurnal.
             case 'akt':
                 ?>
                 <!--Акт на перевод-->
-                <tr jur="<?php echo $row[id] ?>" action="transfer"
+                <tr jur="<?php echo $row['id'] ?>" action="transfer"
                     class="<?php printf("$row[mark] $row[mas] $row[vid] $row[tip] $row[color]"); ?>">
                     <td><img src="<?php echo $pic[$act] ?>"/></td>
-                    <td><?php echo $row[prim];
+                    <td><?php echo $row['prim'];
                         $row = mysql_fetch_assoc($query);
-                        echo " > " . $row[prim]; ?>
+                        echo " > " . $row['prim']; ?>
 
-                        <span id="pr"><?php echo preg_replace('/\\\/', '', $row[pr]); ?></span></td>
-                    <td><?php if ($row[makt] == 0) {
-                            echo $row[pakt];
+                        <span id="pr"><?php echo preg_replace('/\\\/', '', $row['pr']); ?></span></td>
+                    <td><?php if ($row['mark'] == 0) {
+                            echo $row['pakt'];
                         } else {
-                            echo $row[makt];
+                            echo $row['mark'];
                         } ?></td>
-                    <td><?php echo $row[poddon]; ?></td>
+                    <td><?php echo $row['poddon']; ?></td>
                     <td></td>
                 </tr>
                 <?php break; ?>
@@ -203,14 +203,14 @@ $query = mysql_query("SELECT mark,jurnal.id,tovar.prim,jurnal.prim AS pr,jurnal.
             <?php
             case 'plus': ?>
                 <!--Добавление на склад-->
-                <tr jur="<?php echo $row[id] ?>" action="add"
+                <tr jur="<?php echo $row['id'] ?>" action="add"
                     class="add <?php printf("$row[mark] $row[mas] $row[vid] $row[tip] $row[color]"); ?>">
                     <td><img src="<?php echo $pic[$act] ?>"/></td>
-                    <td><?php echo $row[prim]; ?>
+                    <td><?php echo $row['prim']; ?>
                         <span id="add">Принято</span>
-                        <span id="pr"><?php echo preg_replace('/\\\/', '', $row[pr]); ?></span></td>
-                    <td><?php echo $row[plus] ?></td>
-                    <td colspan="1"><?php echo $row[pr] ?></td>
+                        <span id="pr"><?php echo preg_replace('/\\\/', '', $row['pr']); ?></span></td>
+                    <td><?php echo $row['plus'] ?></td>
+                    <td colspan="1"><?php echo $row['pr'] ?></td>
                     <td></td>
                 </tr>
                 <?php break; ?>
@@ -218,14 +218,14 @@ $query = mysql_query("SELECT mark,jurnal.id,tovar.prim,jurnal.prim AS pr,jurnal.
             <?php
             case 'spis': ?>
                 <!--Добавление на склад-->
-                <tr jur="<?php echo $row[id] ?>" action="spis"
+                <tr jur="<?php echo $row['id'] ?>" action="spis"
                     class="add <?php printf("$row[mark] $row[mas] $row[vid] $row[tip] $row[color]"); ?>">
                     <td><img src="<?php echo $pic[$act] ?>"/></td>
-                    <td><?php echo $row[prim]; ?>
+                    <td><?php echo $row['prim']; ?>
                         <span id="spis">Списано</span>
-                        <span id="pr"><?php echo preg_replace('/\\\/', '', $row[pr]); ?></span></td>
-                    <td><?php echo $row[spis] ?></td>
-                    <td colspan="1"><?php echo $row[pr] ?></td>
+                        <span id="pr"><?php echo preg_replace('/\\\/', '', $row['pr']); ?></span></td>
+                    <td><?php echo $row['spis'] ?></td>
+                    <td colspan="1"><?php echo $row['pr'] ?></td>
                     <td></td>
                 </tr>
                 <?php break; ?>
@@ -233,14 +233,14 @@ $query = mysql_query("SELECT mark,jurnal.id,tovar.prim,jurnal.prim AS pr,jurnal.
             <?php
             case 'no_con': ?>
                 <!--Добавление на склад-->
-                <tr jur="<?php echo $row[id] ?>" action="no_con"
+                <tr jur="<?php echo $row['id'] ?>" action="no_con"
                     class="add <?php printf("$row[mark] $row[mas] $row[vid] $row[tip] $row[color]"); ?>">
                     <td><img src="<?php echo $pic[$act] ?>"/></td>
-                    <td><?php echo $row[prim]; ?>
+                    <td><?php echo $row['prim']; ?>
                         <span id="no_con">Некондиция</span>
-                        <span id="pr"><?php echo preg_replace('/\\\/', '', $row[pr]); ?></span></td>
-                    <td><?php echo $row[no_con] ?></td>
-                    <td colspan="1"><?php echo $row[pr] ?></td>
+                        <span id="pr"><?php echo preg_replace('/\\\/', '', $row['pr']); ?></span></td>
+                    <td><?php echo $row['no_con'] ?></td>
+                    <td colspan="1"><?php echo $row['pr'] ?></td>
                     <td></td>
                 </tr>
                 <?php break; ?>
@@ -248,52 +248,52 @@ $query = mysql_query("SELECT mark,jurnal.id,tovar.prim,jurnal.prim AS pr,jurnal.
             <?php
             case 'minus': ?>
                 <!--Отгрузка-->
-                <tr jur="<?php echo $row[id] ?>" action="sold"
+                <tr jur="<?php echo $row['id'] ?>" action="sold"
                     class="sold <?php printf("$row[mark] $row[mas] $row[vid] $row[tip] $row[color]"); ?>">
-                    <td><a title="Просмотр операции" href="operation.php?id=<?php echo $row[id] ?>"><img
+                    <td><a title="Просмотр операции" href="operation.php?id=<?php echo $row['id'] ?>"><img
                                 src="<?php echo $pic[$act] ?>"/></a></td>
-                    <td><?php echo $row[prim]; ?>
+                    <td><?php echo $row['prim']; ?>
                         <span id="agent"><a
                                 href="agents.php?group=date&agent=<?php echo $row[agid] ?>"><?php echo preg_replace('/\\\/', '', $row[agent]); ?></a></span>
-                        <span id="pr"><?php echo $row[pr] ?></span> <span id="nakl"><?php echo $row[nakl]; ?></span>
+                        <span id="pr"><?php echo $row['pr'] ?></span> <span id="nakl"><?php echo $row['nakl']; ?></span>
                         <?php if ($row[trans] == -1) { ?>
                             <span style="float:right; border:1px red solid;" class="trans"><a
-                                    href="operation.php?id=<?php echo $row[id] ?>"><img title="Не указана цена доставки"
+                                    href="operation.php?id=<?php echo $row['id'] ?>"><img title="Не указана цена доставки"
                                                                                         src="../icon/wooden-box--exclamation.png"><a/></span>
                         <?php } ?>
                     </td>
-                    <td><?php echo $row[minus] ?></td>
-                    <td><?php echo $row[poddon] ?></td>
+                    <td><?php echo $row['minus'] ?></td>
+                    <td><?php echo $row['poddon'] ?></td>
                     <td><?php echo $row[money] ?></td>
                 </tr>
                 <?php break; ?>
             <?php
             case 'mws': ?>
                 <!--Выдача в цех-->
-                <tr jur="<?php echo $row[id] ?>" action="mws"
+                <tr jur="<?php echo $row['id'] ?>" action="mws"
                     class="mws <?php printf("$row[mark] $row[mas] $row[vid] $row[tip] $row[color]"); ?>">
                     <td><img src="<?php echo $pic[$act] ?>"/></td>
-                    <td><?php echo $row[prim]; ?>
+                    <td><?php echo $row['prim']; ?>
                         <span id="mws">Выдано в цех</span>
-                        <span id="pr"><?php echo preg_replace('/\\\/', '', $row[pr]); ?></span> <span
-                            id="nakl"><?php echo $row[nakl] ?></span></td>
-                    <td><?php echo $row[mws] ?></td>
-                    <td colspan="1"><?php echo $row[poddon] ?></td>
+                        <span id="pr"><?php echo preg_replace('/\\\/', '', $row['pr']); ?></span> <span
+                            id="nakl"><?php echo $row['nakl'] ?></span></td>
+                    <td><?php echo $row['mws'] ?></td>
+                    <td colspan="1"><?php echo $row['poddon'] ?></td>
                     <td></td>
                 </tr>
                 <?php break; ?>
             <?php
             case 'pws': ?>
                 <!--Получение из цеха-->
-                <tr jur="<?php echo $row[id] ?>" action="pws"
+                <tr jur="<?php echo $row['id'] ?>" action="pws"
                     class="pws <?php printf("$row[mark] $row[mas] $row[vid] $row[tip] $row[color]"); ?>">
                     <td><img src="<?php echo $pic[$act] ?>"/></td>
-                    <td><?php echo $row[prim]; ?>
+                    <td><?php echo $row['prim']; ?>
                         <span id="pws">Принято на склад из цеха</span>
-                        <span id="pr"><?php echo preg_replace('/\\\/', '', $row[pr]); ?></span> <span
-                            id="nakl"><?php echo $row[nakl] ?></span></td>
-                    <td><?php echo $row[pws] ?></td>
-                    <td colspan="1"><?php echo $row[poddon] ?></td>
+                        <span id="pr"><?php echo preg_replace('/\\\/', '', $row['pr']); ?></span> <span
+                            id="nakl"><?php echo $row['nakl'] ?></span></td>
+                    <td><?php echo $row['pws'] ?></td>
+                    <td colspan="1"><?php echo $row['poddon'] ?></td>
                     <td></td>
                 </tr>
                 <?php break;
