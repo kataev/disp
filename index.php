@@ -4,14 +4,10 @@ $g_year = isset($g_year) ? $g_year : date('Y');
 $day = array("Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота");
 $mou = array("Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь");
 
-mysql_connect(localhost, disp, disp);
+mysql_connect('localhost', 'disp', 'disp');
 mysql_query('SET NAMES "utf8"');
-mysql_select_db(disp);
+mysql_select_db('disp');
 ?>
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -24,7 +20,6 @@ and open the template in the editor.
     <script type="text/javascript" src="datepicker/jquery.datepick.js"></script>
     <script type="text/javascript" src="datepicker/jquery.datepick-ru.js"></script>
     <script type="text/javascript" src="scrips.js"></script>
-
 </head>
 <body>
 <div id="header">
