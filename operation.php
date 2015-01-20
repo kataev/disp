@@ -26,7 +26,7 @@ and open the template in the editor.
 mysql_connect(localhost,disp,disp);
 mysql_query('SET NAMES "utf8"');
 mysql_select_db(disp);
-import_request_variables('GP', 'g_');
+
 $query = mysql_query("select tovar.prim as name,color,mark,vid,mas,mark,minus,agent.name as agent,date,time,poddon,nakl,date,trans,jurnal.price as price,money
 	from jurnal,tovar,agent
 	where jurnal.agent=agent.id and tovar.id=jurnal.tov and jurnal.id=$g_id");

@@ -82,7 +82,7 @@ and open the template in the editor.
 	</div>
 	</div>
 <?php
-import_request_variables('GP', 'g_');
+
 $date = date('Y-m-d');
 $date1= $date;
 $date=!isset($g_date)?$date:$g_date;

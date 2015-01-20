@@ -80,7 +80,6 @@ and open the template in the editor.
 
 
         <?php
-import_request_variables('GP', 'g_');
 mysql_connect(localhost,disp,disp);
 mysql_query('SET NAMES "utf8"');
 mysql_select_db(disp);

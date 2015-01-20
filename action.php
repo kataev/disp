@@ -2,7 +2,7 @@
 header("Request-URI: index.php");
 header("Content-Location: index.php");
 header("Location: index.php");
-import_request_variables('GP', 'g_');
+
 $date = date('Y-m-d');
 $date1= $date;
 if ($g_date!="") {$date=$g_date;}

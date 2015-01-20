@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json; codepage=utf-8');
-import_request_variables('GP', 'g_');
+
 mysql_connect(localhost,disp,disp);
 mysql_query('SET NAMES "utf8"');
 mysql_select_db(disp);
