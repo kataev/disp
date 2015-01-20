@@ -225,8 +225,8 @@ $query = mysql_query("select mark,jurnal.id,tovar.prim,jurnal.prim as pr,jurnal.
                     <td><?php echo $row[poddon] ?></td>
                     <td><?php echo $row[money] ?></td>
                 </tr>
-                <?php break;
-            case 'mws': ?>
+                <?php break; ?>
+            <?php case 'mws': ?>
                 <!--Выдача в цех-->
                 <tr jur="<?php echo $row[id] ?>" action="mws" class="mws <?php printf("$row[mark] $row[mas] $row[vid] $row[tip] $row[color]"); ?>">
                     <td><img src="<?php echo $pic[$act]?>"/></td>
@@ -236,8 +236,8 @@ $query = mysql_query("select mark,jurnal.id,tovar.prim,jurnal.prim as pr,jurnal.
                     <td><?php echo $row[mws] ?></td>
                     <td colspan="1"><?php echo $row[poddon] ?></td><td></td>
                 </tr>
-                <?php break;
-            case 'pws': ?>
+                <?php break; ?>
+            <?php case 'pws': ?>
                 <!--Получение из цеха-->
                 <tr jur="<?php echo $row[id] ?>" action="pws" class="pws <?php printf("$row[mark] $row[mas] $row[vid] $row[tip] $row[color]"); ?>">
                     <td><img src="<?php echo $pic[$act]?>"/></td>
@@ -247,17 +247,8 @@ $query = mysql_query("select mark,jurnal.id,tovar.prim,jurnal.prim as pr,jurnal.
                     <td><?php echo $row[pws] ?></td>
                     <td colspan="1"><?php echo $row[poddon] ?></td><td></td>
                 </tr>
-                <?php
-                break;
-
-//End case, end fetch----------------------------------------
-        }} ?>
+                <?php break; }} ?>
     </tbody>
-
 </table>
-
-
-
-
 </body>
 </html>
