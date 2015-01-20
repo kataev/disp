@@ -155,80 +155,82 @@ $query = mysql_query("select tovar.id as id,tovar.sort,mark,vid,mas,tip,color,to
                 </tfoot>
 
                 <tbody>
-                  <?php while($row=mysql_fetch_assoc($query)){?>
-		
-                    <tr id="<?php echo $row[id] ?>" color="<?php echo $row[color];?>" mas="<?php echo $row[mas];?>"
-                            mark="<?php echo $row[mark];?>" brak="<?php echo $row[brak] ?>"
-                    class="<?php $zero=""; if (!($row[begin]||$row[total]||$row[pakt]||$row[makt]||$row[mws]||$row[pws]||$row[mplus]||$row[mminus])) {$zero = "zero";}
-                            printf("$row[mark] $row[mas] $row[vid] $row[tip] $row[color] $zero") ;?>">
-                        <td><span class="icon"></span><?php echo $row[name];?>
+                  <?php
+                  $begin = $mplus = $dplus = $pakt = $makt = $mminus = $dminus = $pws =$mws = $spis = $no_con = $total = 0;
+                  while($row=mysql_fetch_assoc($query)){?>
+
+                    <tr id="<?php echo $row['id'] ?>" color="<?php echo $row['color'];?>" mas="<?php echo $row['mas'];?>"
+                            mark="<?php echo $row['mark'];?>" brak="<?php echo $row['brak'] ?>"
+                    class="<?php $zero=""; if (!($row['begin']||$row['total']||$row['pakt']||$row['makt']||$row['mws']||$row['pws']||$row['mplus']||$row['mminus'])) {$zero = "zero";}
+                            printf($row['mark'].' '.$row['mas'].' '.$row['vid'].' '.$row['tip'].' '.$row['color'].' '.$zero) ;?>">
+                        <td><span class="icon"></span><?php echo $row['name'];?>
 			    <img class='transfer' src="../icon/arrow-split.png" title="Перевод" />
-                            <a href="shipping.php?id=<?php echo $row[id]; ?>"  ><img src="../icon/truck--plus.png" title="Отгрузка"  /></a>
-                            <a href="add.php?id=<?php echo $row[id]; ?>"><img src="../icon/box--plus.png" title="Приход"/></a>
-			    <a href="workshop.php?id=<?php echo $row[id]; ?>"  ><img src="../icon/wall-break.png" title="Выдача в цех на переборку"  /></a>
+                            <a href="shipping.php?id=<?php echo $row['id']; ?>"  ><img src="../icon/truck--plus.png" title="Отгрузка"  /></a>
+                            <a href="add.php?id=<?php echo $row['id']; ?>"><img src="../icon/box--plus.png" title="Приход"/></a>
+			    <a href="workshop.php?id=<?php echo $row['id']; ?>"  ><img src="../icon/wall-break.png" title="Выдача в цех на переборку"  /></a>
 			    
                         </td>
-                        <td class="begin data" title="<?php echo r_ye($row[begin],$row[mas]);?>"
-			    n="<?php echo $row[begin]; ?>"
-                            ye="<?php echo r_ye($row[begin],$row[mas]);
-                                        $yeb += r_ye($row[begin],$row[mas]); ?>">
-                            <?php echo $row[begin]; $begin+=$row[begin] ?></td>
+                        <td class="begin data" title="<?php echo r_ye($row['begin'],$row['mas']);?>"
+			    n="<?php echo $row['begin']; ?>"
+                            ye="<?php echo r_ye($row['begin'],$row['mas']);
+                                        $yeb += r_ye($row['begin'],$row['mas']); ?>">
+                            <?php echo $row['begin']; $begin+=$row['begin'] ?></td>
 
-                        <td class="mplus data" title="<?php echo r_ye($row[mplus],$row[mas]);?>"
-			    n="<?php echo $row[mplus];?>"
-			    ye="<?php echo r_ye($row[mplus],$row[mas]); ?>"
-			    ><?php echo $row[mplus]; $mplus+=$row[mplus]; $mplusye+=r_ye($row[mplus],$row[mas]) ?></td>
+                        <td class="mplus data" title="<?php echo r_ye($row['mplus'],$row['mas']);?>"
+			    n="<?php echo $row['mplus'];?>"
+			    ye="<?php echo r_ye($row['mplus'],$row['mas']); ?>"
+			    ><?php echo $row['mplus']; $mplus+=$row['mplus']; $mplusye+=r_ye($row['mplus'],$row['mas']) ?></td>
 
-                        <td class="dplus data" title="<?php echo r_ye($row[dplus],$row[mas]);?>"
-			    n="<?php echo $row[dplus];?>"
-			    ye="<?php echo r_ye($row[dplus],$row[mas]); ?>"
-			    ><?php echo $row[dplus]; $dplus+=$row[dplus];$dplusye+=r_ye($row[dplus],$row[mas]) ?></td>
+                        <td class="dplus data" title="<?php echo r_ye($row['dplus'],$row['mas']);?>"
+			    n="<?php echo $row['dplus'];?>"
+			    ye="<?php echo r_ye($row['dplus'],$row['mas']); ?>"
+			    ><?php echo $row['dplus']; $dplus+=$row['dplus'];$dplusye+=r_ye($row['dplus'],$row['mas']) ?></td>
 
-			<td class="pakt data" title="<?php echo r_ye($row[pakt],$row[mas]);?>"
-			    n="<?php echo $row[pakt];?>"
-			    ye="<?php echo r_ye($row[pakt],$row[mas]); ?>"
-			    ><?php echo $row[pakt]; $pakt+=$row[pakt]; $plakt_ye+=r_ye($row[pakt],$row[mas]) ?></td>
+			<td class="pakt data" title="<?php echo r_ye($row['pakt'],$row['mas']);?>"
+			    n="<?php echo $row['pakt'];?>"
+			    ye="<?php echo r_ye($row['pakt'],$row['mas']); ?>"
+			    ><?php echo $row['pakt']; $pakt+=$row['pakt']; $plakt_ye+=r_ye($row['pakt'],$row['mas']) ?></td>
 
-                        <td class="makt data" title="<?php echo r_ye($row[makt],$row[mas]);?>"
-			    n="<?php echo $row[makt];?>"
-			    ye="<?php echo r_ye($row[makt],$row[mas]); ?>"
-			    ><?php echo $row[makt]; $makt+=$row[makt]; $mlakt_ye+=r_ye($row[makt],$row[mas])?></td>
+                        <td class="makt data" title="<?php echo r_ye($row['makt'],$row['mas']);?>"
+			    n="<?php echo $row['makt'];?>"
+			    ye="<?php echo r_ye($row['makt'],$row['mas']); ?>"
+			    ><?php echo $row['makt']; $makt+=$row['makt']; $mlakt_ye+=r_ye($row['makt'],$row['mas'])?></td>
 
-                        <td class="mminus data" title="<?php echo r_ye($row[mminus],$row[mas]);?>"
-			    n="<?php echo $row[mminus];?>"
-			    ye="<?php echo r_ye($row[mminus],$row[mas]); ?>"
-			    ><?php echo $row[mminus]; $mminus+=$row[mminus]; $mminus_ye+=r_ye($row[mminus],$row[mas]) ?></td>
+                        <td class="mminus data" title="<?php echo r_ye($row['mminus'],$row['mas']);?>"
+			    n="<?php echo $row['mminus'];?>"
+			    ye="<?php echo r_ye($row['mminus'],$row['mas']); ?>"
+			    ><?php echo $row['mminus']; $mminus+=$row['mminus']; $mminus_ye+=r_ye($row['mminus'],$row['mas']) ?></td>
 
-                        <td class="dminus data" title="<?php echo r_ye($row[dminus],$row[mas]);?>"
-			    n="<?php echo $row[dminus];?>"
-			    ye="<?php echo r_ye($row[dminus],$row[mas]); ?>"
-			    ><?php echo $row[dminus]; $dminus+=$row[dminus]; $dminus_ye+=r_ye($row[dminus],$row[mas]) ?></td>
+                        <td class="dminus data" title="<?php echo r_ye($row['dminus'],$row['mas']);?>"
+			    n="<?php echo $row['dminus'];?>"
+			    ye="<?php echo r_ye($row['dminus'],$row['mas']); ?>"
+			    ><?php echo $row['dminus']; $dminus+=$row['dminus']; $dminus_ye+=r_ye($row['dminus'],$row['mas']) ?></td>
 
-                        <td class="uex data pws" title="<?php echo r_ye($row[pws],$row[mas]);?>"
-			    n="<?php echo $row[pws];?>"
-			    ye="<?php echo r_ye($row[pws],$row[mas]); ?>"
-			    ><?php echo $row[pws]; $pws+=$row[pws]; $pws_ye+=r_ye($row[pws],$row[mas]) ?></td>
+                        <td class="uex data pws" title="<?php echo r_ye($row['pws'],$row['mas']);?>"
+			    n="<?php echo $row['pws'];?>"
+			    ye="<?php echo r_ye($row['pws'],$row['mas']); ?>"
+			    ><?php echo $row['pws']; $pws+=$row['pws']; $pws_ye+=r_ye($row['pws'],$row['mas']) ?></td>
 
-			<td class="uex data mws" title="<?php echo r_ye($row[mws],$row[mas]);?>"
-			    n="<?php echo $row[mws];?>"
-			    ye="<?php echo r_ye($row[mws],$row[mas]); ?>"
-			    ><?php echo $row[mws]; $mws+=$row[mws]; $mws_ye+=r_ye($row[mws],$row[mas]) ?></td>
+			<td class="uex data mws" title="<?php echo r_ye($row['mws'],$row['mas']);?>"
+			    n="<?php echo $row['mws'];?>"
+			    ye="<?php echo r_ye($row['mws'],$row['mas']); ?>"
+			    ><?php echo $row['mws']; $mws+=$row['mws']; $mws_ye+=r_ye($row['mws'],$row['mas']) ?></td>
 
-			<td class="data spis" title="<?php echo r_ye($row[spis],$row[mas]);?>"
-			    n="<?php echo $row[spis];?>"
-			    ye="<?php echo r_ye($row[spis],$row[mas]); ?>"
-			    ><?php echo $row[spis]; $spis+=$row[spis]; $spis_ye+=r_ye($row[spis],$row[mas]) ?></td>
+			<td class="data spis" title="<?php echo r_ye($row['spis'],$row['mas']);?>"
+			    n="<?php echo $row['spis'];?>"
+			    ye="<?php echo r_ye($row['spis'],$row['mas']); ?>"
+			    ><?php echo $row['spis']; $spis+=$row['spis']; $spis_ye+=r_ye($row['spis'],$row['mas']) ?></td>
 
-			<td class="data no_con" title="<?php echo r_ye($row[no_con],$row[mas]);?>"
-			    n="<?php echo $row[no_con];?>"
-			    ye="<?php echo r_ye($row[no_con],$row[mas]); ?>"
-			    ><?php echo $row[no_con]; $no_con+=$row[no_con]; $no_con_ye+=r_ye($row[no_con],$row[mas]) ?></td>
+			<td class="data no_con" title="<?php echo r_ye($row['no_con'],$row['mas']);?>"
+			    n="<?php echo $row['no_con'];?>"
+			    ye="<?php echo r_ye($row['no_con'],$row['mas']); ?>"
+			    ><?php echo $row['no_con']; $no_con+=$row['no_con']; $no_con_ye+=r_ye($row['no_con'],$row['mas']) ?></td>
 
-                        <td class="total data" title="<?php echo r_ye($row[total],$row[mas]);?>"
-			    n="<?php echo $row[total]; ?>"
-                            ye="<?php echo r_ye($row[total],$row[mas]);
-                                        $yet += r_ye($row[total],$row[mas]);?>">
-                            <?php echo $row[total]; $total+=$row[total]; ?></td>
+                        <td class="total data" title="<?php echo r_ye($row['total'],$row['mas']);?>"
+			    n="<?php echo $row['total']; ?>"
+                            ye="<?php echo r_ye($row['total'],$row['mas']);
+                                        $yet += r_ye($row['total'],$row['mas']);?>">
+                            <?php echo $row['total']; $total+=$row['total']; ?></td>
                         
                 </tr>
                 <?php }?>
@@ -236,18 +238,18 @@ $query = mysql_query("select tovar.id as id,tovar.sort,mark,vid,mas,tip,color,to
                 <tfoot>
                     <tr id="end" class="data">
                         <td ><span id="vsego"><a href="transfer.php">Перевод</a></span>Всего:</td>
-                        <td id="begin" class="data begin" title="<?php echo $yeb;?>"><?php echo $begin; ?></td>
-			<td id="mplus" class="data mplus" title="<?php echo $mplusye;?>"><?php echo $mplus; ?></td>
-			<td id="dplus" class="data dplus" title="<?php echo $dplusye;?>"><?php echo $dplus; ?></td>
-			<td id="pakt" class="data pakt" title="<?php echo $pakt_ye;?>"><?php echo $pakt; ?></td>
-			<td id="makt" class="data makt" title="<?php echo $makt_ye;?>"><?php echo $makt; ?></td>
-			<td id="mminus" class="data mminus" title="<?php echo $mminus_ye;?>"><?php echo $mminus ?> </td>
-			<td id="dminus" class="data dminus" title="<?php echo $dminus_ye;?>"><?php echo $dminus ?> </td>
-			<td id="pws" class="data uex pws" title="<?php echo $pws_ye;?>"><?php echo $pws ?> </td>
-			<td id="mws" class="data uex mws" title="<?php echo $mws_ye;?>"><?php echo $mws ?> </td>
-			<td id="spis"class="data spis" title="<?php echo $spis_ye;?>"><?php echo $spis ?> </td>
-			<td id="no_con" class="data no_con" title="<?php echo $no_con_ye;?>"><?php echo $no_con ?> </td>
-			<td id="total" class="data total" title="<?php echo $yet; ?>"><?php echo $total; ?></td>
+                        <td id="begin" class="data begin" ><?php echo $begin; ?></td>
+			<td id="mplus" class="data mplus" ><?php echo $mplus; ?></td>
+			<td id="dplus" class="data dplus" ><?php echo $dplus; ?></td>
+			<td id="pakt" class="data pakt" ><?php echo $pakt; ?></td>
+			<td id="makt" class="data makt" ><?php echo $makt; ?></td>
+			<td id="mminus" class="data mminus" ><?php echo $mminus ?> </td>
+			<td id="dminus" class="data dminus" ><?php echo $dminus ?> </td>
+			<td id="pws" class="data uex pws" ><?php echo $pws ?> </td>
+			<td id="mws" class="data uex mws" ><?php echo $mws ?> </td>
+			<td id="spis"class="data spis" ><?php echo $spis ?> </td>
+			<td id="no_con" class="data no_con" ><?php echo $no_con ?> </td>
+			<td id="total" class="data total" ><?php echo $total; ?></td>
 
                     </tr>
 
