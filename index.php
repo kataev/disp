@@ -1,5 +1,4 @@
 <?php
-import_request_variables('GP', 'g_');
 $g_month = isset($g_month) ? $g_month : date('m');
 $g_year = isset($g_year) ? $g_year : date('Y');
 $day = array("Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота");
