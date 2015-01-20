@@ -156,7 +156,7 @@ $query = mysql_query("select tovar.id as id,tovar.sort,mark,vid,mas,tip,color,to
 
                 <tbody>
                   <?php
-                  $begin = $mplus = $dplus = $pakt = $makt = $mminus = $dminus = $pws =$mws = $spis = $no_con = $total = 0;
+                  $mplusye = $begin = $mplus = $dplus = $pakt = $makt = $mminus = $dminus = $pws =$mws = $spis = $no_con = $total = 0;
                   while($row=mysql_fetch_assoc($query)){?>
 
                     <tr id="<?php echo $row['id'] ?>" color="<?php echo $row['color'];?>" mas="<?php echo $row['mas'];?>"
