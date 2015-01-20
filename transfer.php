@@ -49,11 +49,11 @@ mysql_query('SET NAMES "utf8"');
 mysql_select_db('disp');
 $query = mysql_query("  SELECT tovar.id as id,mark,vid,mas,tip,color,tovar.prim as name,total
                         FROM sclad,tovar
-                        WHERE sclad.id=tovar.id and tovar.id=$_SERVER[from]");
+                        WHERE sclad.id=tovar.id and tovar.id=$_GET[from]");
 $from = mysql_fetch_assoc($query);
 $query = mysql_query("  SELECT tovar.id as id,mark,vid,mas,tip,color,tovar.prim as name,total
                         FROM sclad,tovar
-                        WHERE sclad.id=tovar.id and tovar.id=$_SERVER[to]");
+                        WHERE sclad.id=tovar.id and tovar.id=$_GET[to]");
 $to = mysql_fetch_assoc($query);
 $query = mysql_query("  select MAX(akt)+1 as max from jurnal");
 $akt = mysql_fetch_assoc($query);
@@ -88,8 +88,8 @@ $akt = mysql_fetch_assoc($query);
             <textarea name="prim" cols="40" rows="3"></textarea>
 
             <input id="subm" type="hidden" name="akt" value="<?php echo $akt['max'] ?>"/>
-            <input id="subm" type="hidden" name="from" value="<?php echo $_SERVER['from'] ?>"/>
-            <input id="subm" type="hidden" name="to" value="<?php echo $_SERVER['to'] ?>"/>
+            <input id="subm" type="hidden" name="from" value="<?php echo $_GET['from'] ?>"/>
+            <input id="subm" type="hidden" name="to" value="<?php echo $_GET['to'] ?>"/>
             <input id="subm" type="hidden" name="action" value="transfer"/>
 
             <input id="subbutton" type="submit" name="submit" value="Перевести"/>

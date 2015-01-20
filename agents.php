@@ -44,7 +44,7 @@ mysql_connect('localhost','disp','disp');
 mysql_query('SET NAMES "utf8"');
 mysql_select_db('disp');
 
-$agent=mysql_query("SELECT * FROM agent where id=$_SERVER[agent]");
+$agent=mysql_query("SELECT * FROM agent where id=$_GET[agent]");
 $ag=mysql_fetch_assoc($agent);
 
 
