@@ -17,25 +17,20 @@ and open the template in the editor.
     <script type="text/javascript">
         $(document).ready(function () {
             $('input[name="date"]').datepick({dateFormat: 'yy-mm-dd'});
-
-
             $("form").validate({
                 rules: {
-                    kirp: {required: true, number: true, },
-                    poddon: {required: true, number: true, },
-
+                    kirp: {required: true, number: true },
+                    poddon: {required: true, number: true }
                 },
                 messages: {
                     kirp: {
                         required: "Введите кол-во кирпича",
-                        number: "Вводите число",
-
+                        number: "Вводите число"
                     },
                     poddon: {
                         required: "Введите кол-во поддонов",
-                        number: "Вводите число",
-                    },
-
+                        number: "Вводите число"
+                    }
                 }
             });
         });
@@ -49,7 +44,7 @@ mysql_query('SET NAMES "utf8"');
 mysql_select_db('disp');
 $query = mysql_query("  SELECT id,mark,vid,mas,tip,color,tovar.prim as name
                         FROM tovar
-                        WHERE tovar.id=$_GET['id']");
+                        WHERE tovar.id=$_GET[id]");
 $row = mysql_fetch_assoc($query);
 
 ?>
