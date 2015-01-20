@@ -257,7 +257,7 @@ $query = mysql_query("SELECT mark,jurnal.id,tovar.prim,jurnal.prim AS pr,jurnal.
                         <span id="agent"><a
                                 href="agents.php?group=date&agent=<?php echo $row[agid] ?>"><?php echo preg_replace('/\\\/', '', $row['agent']); ?></a></span>
                         <span id="pr"><?php echo $row['pr'] ?></span> <span id="nakl"><?php echo $row['nakl']; ?></span>
-                        <?php if ($row[trans] == -1) { ?>
+                        <?php if ($row['trans'] == -1) { ?>
                             <span style="float:right; border:1px red solid;" class="trans"><a
                                     href="operation.php?id=<?php echo $row['id'] ?>"><img title="Не указана цена доставки"
                                                                                         src="../icon/wooden-box--exclamation.png"><a/></span>
