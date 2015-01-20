@@ -137,6 +137,7 @@ $query = mysql_query("SELECT mark,jurnal.id,tovar.prim,jurnal.prim AS pr,jurnal.
 
     <tbody>
     <?php while ($row = mysql_fetch_assoc($query)) {
+        $date = $date_t = 0;
         if ($row['date'] != $date_t) {
             ?>
             <tr>
