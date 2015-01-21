@@ -42,7 +42,7 @@ $mou = array("Января", "Февраля", "Марта", "Апреля", "М
 mysql_connect('localhost', 'disp', 'disp');
 mysql_query('SET NAMES "utf8"');
 mysql_select_db('disp');
-if ($_GET['agent']) {
+if (!empty($_GET['agent'])) {
     $agent = mysql_query("SELECT * FROM agent where id=$_GET[agent]");
 } else {
     $agent = mysql_query("SELECT * FROM agent");

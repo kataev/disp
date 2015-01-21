@@ -88,6 +88,17 @@ $date1= $date;
 $date=!isset($_GET['date'])?$date:$_GET['date'];
 $date1=!isset($_GET['date1'])?$date1:$_GET['date1'];
 
+$begin=0;
+$mplus=0;
+$dplus=0;
+$pakt=0;
+$makt=0;
+$mminus=0;
+$dminus=0;
+$pws=0;
+$mws=0;
+$total=0;
+
 function r_ye($n,$s){
     if ($s=='Полуторный')
         return round($n*1.35);
