@@ -106,15 +106,15 @@ $row = mysql_fetch_assoc($query);
         <div>
             <div id="h">
                 <h1>Отгрузка</h1>
-                <h2><?php echo $row[name]?></h2>
+                <h2><?php echo $row['name']?></h2>
 		<a href="sclad.php"><img src="../icon/arrow-turn-180-left.png" />Назад</a>
             </div>
             <form name="Отгрузка" action="action.php" method="GET">
                 <fieldset id="shipping" class="<?php
-                            $zero=""; if (!($row[begin]||$row[total])) {$zero = "zero";}
+                            $zero=""; if (!($row['begin']||$row['total'])) {$zero = "zero";}
                             printf("$row[mark] $row[mas] $row[vid] $row[tip] $row[color] $zero") ?>">
                     <label for="minus"><img src="../icon/counter.png" /> Кол-во кирпича:</label>
-                    <input max="<?php echo $row[total] ?>" type="text" name="minus"/><br />
+                    <input max="<?php echo $row['total'] ?>" type="text" name="minus"/><br />
 
                     <label for="poddon"><img src="../icon/store.png" /> Кол-во поддонов:</label>
                     <input type="text" name="poddon"/><br />
@@ -128,7 +128,7 @@ $row = mysql_fetch_assoc($query);
 			$agent = mysql_query("  SELECT id,name from agent");
 			while($ag=mysql_fetch_assoc($agent)){
 			?>
-			<option value="<?php echo $ag[id]; ?>"><?php echo preg_replace('/\\\/','',$ag[name]); ?></option>
+			<option value="<?php echo $ag['id']; ?>"><?php echo preg_replace('/\\\/','',$ag['name']); ?></option>
 
 			<?php };?>
 		    </select><a href="agentadd.php" title="Добавить контрагента"><img src="../icon/user--plus.png" alt="Добавить контрагента" /></a><br />

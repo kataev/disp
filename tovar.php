@@ -83,8 +83,8 @@ mysql_query('SET NAMES "utf8"');
 mysql_select_db('disp');
 $date = date('Y-m-d');
 $date1= $date;
-$date=!isset($g_date)?$date:$g_date;
-$date1=!isset($g_date1)?$date1:$g_date1;
+$date=!isset($_GET['date'])?$date:$_GET['date'];
+$date1=!isset($_GET['date1'])?$date1:$_GET['date1'];
 
 function r_ye($n,$s){
     if ($s=='Полуторный')
@@ -114,21 +114,21 @@ $query = mysql_query("select tovar.id,tovar.prim as name,color,mas,vid,tip,mark,
 
                 <tbody>
                   <?php while($row=mysql_fetch_assoc($query)){?>
-                    <tr id="<?php echo $row[id] ?>" color="<?php echo $row[color];?>" mas="<?php echo $row[mas];?>"
-                            mark="<?php echo $row[mark];?>"
-                    class="<?php $zero=""; if (!($row[begin]||$row[total])) {$zero = "zero";}
+                    <tr id="<?php echo $row['id'] ?>" color="<?php echo $row['color'];?>" mas="<?php echo $row['mas'];?>"
+                            mark="<?php echo $row['mark'];?>"
+                    class="<?php $zero=""; if (!($row['begin']||$row['total'])) {$zero = "zero";}
                             printf("$row[mark] $row[mas] $row[vid] $row[tip] $row[color] $zero") ;?>">
-			<td><?php echo $row[id];?></td>
-                        <td><?php echo $row[name];?></td>
-			<td><?php echo $row[mark];?></td>
-			<td><?php echo $row[color];?></td>
-			<td><?php echo $row[mas];?></td>
-			<td><?php echo $row[vid];?></td>
-			<td><?php echo $row[tip];?></td>
-			<td><?php echo $row[total];?></td>
+			<td><?php echo $row['id'];?></td>
+                        <td><?php echo $row['name'];?></td>
+			<td><?php echo $row['mark'];?></td>
+			<td><?php echo $row['color'];?></td>
+			<td><?php echo $row['mas'];?></td>
+			<td><?php echo $row['vid'];?></td>
+			<td><?php echo $row['tip'];?></td>
+			<td><?php echo $row['total'];?></td>
 			<td>
-			<a href='edit.php?id=<?php echo $row[id];?>'><img src="../icon/book--pencil.png" /></a>
-			<a href='debit.php?id=<?php echo $row[id];?>'><img src="../icon/folder-broken.png" /></a>
+			<a href='edit.php?id=<?php echo $row['id'];?>'><img src="../icon/book--pencil.png" /></a>
+			<a href='debit.php?id=<?php echo $row['id'];?>'><img src="../icon/folder-broken.png" /></a>
 			</td>
 
                         

@@ -18,8 +18,8 @@ mysql_query('SET NAMES "utf8"');
 mysql_select_db('disp');
 $date = date('Y-m-d');
 $date1= $date;
-$date=!isset($g_date)?$date:$g_date;
-$date1=!isset($g_date1)?$date1:$g_date1;
+$date=!isset($_GET['date'])?$date:$_GET['date'];
+$date1=!isset($_GET['date1'])?$date1:$_GET['date1'];
 
 $query = mysql_query("select * from agent");
         ?>

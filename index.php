@@ -1,8 +1,10 @@
 <?php
-$g_month = isset($g_month) ? $g_month : date('m');
-$g_year = isset($g_year) ? $g_year : date('Y');
+$g_month = isset($_GET['month']) ? $_GET['month'] : date('m');
+$g_year = isset($_GET['year']) ? $_GET['year'] : date('Y');
 $day = array("Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота");
 $mou = array("Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь");
+
+
 
 mysql_connect('localhost', 'disp', 'disp');
 mysql_query('SET NAMES "utf8"');
@@ -107,7 +109,7 @@ mysql_select_db('disp');
 <?php
 
 $query = mysql_query("SELECT mark,jurnal.id,tovar.prim,jurnal.prim AS pr,jurnal.price,jurnal.trans,nakl,
-	tov,minus,plus,akt,'poddon',jurnal.agent AS agid,agent.name AS agent,pakt,'mark',date,time,color,mas,vid,tip,
+	tov,minus,plus,akt,poddon,jurnal.agent AS agid,agent.name AS agent,pakt,'mark',date,time,color,mas,vid,tip,
 	workshop AS pws,mws,ROUND(jurnal.price*jurnal.minus) AS money, spis, no_con
 	    FROM jurnal
 	    LEFT JOIN tovar ON tovar.id=jurnal.tov
@@ -260,7 +262,7 @@ $query = mysql_query("SELECT mark,jurnal.id,tovar.prim,jurnal.prim AS pr,jurnal.
                                 src="<?php echo $pic[$act] ?>"/></a></td>
                     <td><?php echo $row['prim']; ?>
                         <span id="agent"><a
-                                href="agents.php?group=date&agent=<?php echo $row[agid] ?>"><?php echo preg_replace('/\\\/', '', $row['agent']); ?></a></span>
+                                href="agents.php?group=date&agent=<?php echo $row['agid'] ?>"><?php echo preg_replace('/\\\/', '', $row['agent']); ?></a></span>
                         <span id="pr"><?php echo $row['pr'] ?></span> <span id="nakl"><?php echo $row['nakl']; ?></span>
                         <?php if ($row['trans'] == -1) { ?>
                             <span style="float:right; border:1px red solid;" class="trans"><a

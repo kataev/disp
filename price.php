@@ -34,7 +34,7 @@ mysql_query('SET NAMES "utf8"');
 mysql_select_db('disp');
 //$query = mysql_query("  SELECT tovar.id as id,mark,vid,mas,tip,color,tovar.prim as name,total
 //                        FROM sclad,tovar
-//                        WHERE sclad.id=tovar.id and tovar.id=$_GET['id']");
+//                        WHERE sclad.id=tovar.id and tovar.id=$_GET[id]");
 //$row = mysql_fetch_assoc($query);
 
 
@@ -43,7 +43,7 @@ mysql_select_db('disp');
         <div>
             <div id="h">
                 <h1>Установка нового прайса</h1>
-                <h2><?php echo $row[name]?></h2>
+                <h2><?php echo $row['name']?></h2>
 		<a href="sclad.php"><img src="../icon/arrow-turn-180-left.png" />Назад</a>
             </div>
             <form name="Установка нового прайса" action="#" method="GET">

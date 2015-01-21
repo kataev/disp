@@ -35,8 +35,8 @@ and open the template in the editor.
 
 $date = date('Y-m-d');
 $date1= $date;
-$date=!isset($g_date)?$date:$g_date;
-$date1=!isset($g_date1)?$date1:$g_date1;
+$date=!isset($_GET['date'])?$date:$_GET['date'];
+$date1=!isset($_GET['date1'])?$date1:$_GET['date1'];
 $day = array("Воскресенье","Понедельник","Вторник","Среда","Четверг","Пятница","Суббота");
 $mou = array("Января","Февраля","Марта","Апреля","Мая","Июня","Июля","Августа","Сентября","Октября","Ноября","Декабря");
 
@@ -47,6 +47,11 @@ mysql_select_db('disp');
 $agent=mysql_query("SELECT * FROM agent where id=$_GET[agent]");
 $ag=mysql_fetch_assoc($agent);
 
+$i=0;
+$money=0;
+$poddon=0;
+$minus=0;
+$name="";
 
 
 ?>
@@ -54,8 +59,8 @@ $ag=mysql_fetch_assoc($agent);
 	<img id="logo" src="../logo+text.png" />
 	<div id="name"><h1>Операции</h1>
 	    
-		<a href="agents.php?agent=<?php echo $g_agent ?>&group=date">Дата</a>
-		<a href="agents.php?agent=<?php echo $g_agent ?>&group=kirp">Кирпич</a>
+		<a href="agents.php?agent=<?php echo $_GET[agent] ?>&group=date">Дата</a>
+		<a href="agents.php?agent=<?php echo $_GET[agent] ?>&group=kirp">Кирпич</a>
 	    
 	</div>
 		<div id="menu">
@@ -146,12 +151,12 @@ $ag=mysql_fetch_assoc($agent);
 
 		
 	    <?php
-	    switch ($g_group) {
+	    switch ($_GET['group']) {
 		case 'date':
 		//SORTIROVKA PO DATE
 	$q=mysql_query("SELECT jurnal.id as id,tovar.prim as name,color,mark,vid,tip,mas,jurnal.prim as agent,ROUND(jurnal.price*jurnal.minus) as money,date,time,nakl,minus,poddon
 		FROM jurnal,tovar
-		where agent=$g_agent and tovar.id=jurnal.tov ORDER BY date DESC ");// group by tovar.prim
+		where agent=$_GET[agent] and tovar.id=jurnal.tov ORDER BY date DESC ");// group by tovar.prim
 	while($row=mysql_fetch_assoc($q)){
 	    
 	    if ($row['date']!=$date_t) {
@@ -189,7 +194,7 @@ $ag=mysql_fetch_assoc($agent);
 			jurnal.prim as agent,ROUND(jurnal.price*jurnal.minus) as money,
 			date,time,nakl,minus as minus,poddon as poddon
 		FROM jurnal,tovar
-		where agent=$g_agent and tovar.id=jurnal.tov ORDER BY tovar.prim DESC,date ");// group by tovar.prim
+		where agent=$_GET[agent] and tovar.id=jurnal.tov ORDER BY tovar.prim DESC,date ");// group by tovar.prim
 	while($row=mysql_fetch_assoc($q)){
 	     if ($row['name']!=$name) {
 	    if ($i>0){ ?><tr class="end"><td colspan="3" style="text-align: right;" >Всего отгруженно:</td>

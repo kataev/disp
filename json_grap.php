@@ -6,12 +6,12 @@ mysql_query('SET NAMES "utf8"');
 mysql_select_db('disp');
 
 
-$g_month=isset($g_month)?$g_month:date('m');
-$g_year=isset($g_year)?$g_year:date('Y');
+$g_month=isset($_GET['month'])?$_GET['month']:date('m');
+$g_year=isset($_GET['year'])?$_GET['year']:date('Y');
 //echo $g_month,$g_year;
-if (isset($g_color))
+if (isset($_GET['color']))
     {
-    switch ($g_color){
+    switch ($_GET['color']){
 	case 0: $g_color="";	break;
 	case 1: $g_color=" and color=\"Красный\"";	break;
 	case 2: $g_color=" and color=\"Желтый\"";	break;
@@ -25,7 +25,7 @@ if (isset($g_color))
 
 echo "{";
 
-switch ($g_oper){
+switch ($_GET['oper']){
 //AGENT
     case agent:
 
@@ -52,10 +52,10 @@ $query = mysql_query($q);
 $i=0;
 echo "\"a".++$f."\":[";
 while($row=mysql_fetch_assoc($query)){
-    $a+=$row[data];
+    $a+=$row['data'];
     if (++$i!=mysql_num_rows($query))
-    {echo "[$row[id],".$row[data]."],";} else
-    {echo "[$row[id],".$row[data]."]";}
+    {echo "[$row[id],".$row['data']."],";} else
+    {echo "[$row[id],".$row['data']."]";}
 }
 
 echo "],\n";
@@ -75,7 +75,7 @@ group by day(date)) as s on s.date=sclad.id limit 31
 ";
 $query = mysql_query($q);
 $i=0;
-switch ($col[color]) {
+switch ($col['color']) {
     case "Белый  ":
 	$color="white";
     break;
@@ -104,10 +104,10 @@ case Светлый:
 
 echo "\"$color\":[";
 while($row=mysql_fetch_assoc($query)){
-    $a+=$row[data];
+    $a+=$row['data'];
     if (++$i!=mysql_num_rows($query))
-    {echo "[$row[id],".$row[data]."],";} else
-    {echo "[$row[id],".$row[data]."]";}
+    {echo "[$row[id],".$row['data']."],";} else
+    {echo "[$row[id],".$row['data']."]";}
 }
 
 echo "],\n";
@@ -130,10 +130,10 @@ $i=0;
 
 echo "\"a$cp\":[";
 while($row=mysql_fetch_assoc($query)){
-    $a+=$row[data];
+    $a+=$row['data'];
     if (++$i!=mysql_num_rows($query))
-    {echo "[$row[id],".$row[data]."],";} else
-    {echo "[$row[id],".$row[data]."]";}
+    {echo "[$row[id],".$row['data']."],";} else
+    {echo "[$row[id],".$row['data']."]";}
 }
 
 echo "],\n";

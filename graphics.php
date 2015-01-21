@@ -210,7 +210,7 @@ plotcolor();
 						$mon = mysql_query("select month(date) as month from jurnal group by month(date) order by 1 desc;");
 			while($ag=mysql_fetch_assoc($mon)){
 			?>
-			<option value="<?php echo $ag[month]; ?>"><?php echo $mou[$ag[month]-1]; ?></option>
+			<option value="<?php echo $ag['month']; ?>"><?php echo $mou[$ag['month']-1]; ?></option>
 
 			<?php };?>
 		    </select>
@@ -220,7 +220,7 @@ plotcolor();
 			$mon = mysql_query("select year(date) as year from jurnal group by year(date) order by 1 desc;");
 			while($ag=mysql_fetch_assoc($mon)){
 			?>
-			<option value="<?php echo $ag[year]; ?>"><?php echo $ag[year]; ?></option>
+			<option value="<?php echo $ag['year']; ?>"><?php echo $ag['year']; ?></option>
 
 			<?php };?>
 		    </select>

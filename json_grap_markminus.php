@@ -6,9 +6,9 @@ mysql_query('SET NAMES "utf8"');
 mysql_select_db('disp');
 $day = array("Воскресенье","Понедельник","Вторник","Среда","Четверг","Пятница","Суббота");
 
-if (isset($g_color))
+if (isset($_GET['color']))
     {
-    switch ($g_color){
+    switch ($_GET['color']){
 	case 0: $g_color="";	break;
 	case 1: $g_color=" and color=\"Красный\"";	break;
 	case 2: $g_color=" and color=\"Желтый\"";	break;
@@ -22,7 +22,7 @@ if (isset($g_color))
 
 
 
-switch ($g_oper){
+switch ($_GET['oper']){
  case markmonth:
      
      break;
@@ -35,7 +35,7 @@ echo "\"a".$mark."\":[";
 $q = "select id,IFNULL(data,0) as data
     from ind
     left join (
-    select month(date) as date,SUM($g_oper) as data
+    select month(date) as date,SUM($_GET[oper]) as data
     from jurnal,tovar
     where tovar.id=jurnal.tov
     and date>'2010-11-01'
